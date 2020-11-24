@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">MultiApp Proyecto</string>
+    <string name="et_nombre">¿Cómo te llamas?</string>
+    <string name="boton">Iniciar</string>
+
+    <string name="edite_vidas">Vidas:</string>
+    <string name="jugador_nombre">Jugador:</string>
+    <string name="edite_respuesta">Respuesta</string>
+    <string name="boton_multi">Comprobar</string>
+    <string name="puntaje_total">Puntaje: 0</string>
+
+</resources>
