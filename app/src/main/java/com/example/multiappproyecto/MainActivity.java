@@ -12,10 +12,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.multiappproyecto.spacedrepetition.ReminderBroadcast;
 
@@ -23,12 +27,45 @@ public class MainActivity extends AppCompatActivity {
 
 
     private TextView tv_bestScore;
+    private MediaPlayer mp_click, mp_intro;
+    Switch aSwitch;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.mipmap.ic_launcher_foreground);
+
+        mp_intro = MediaPlayer.create(this, R.raw.intro);
+
+        aSwitch = (Switch) findViewById(R.id.switch1);
+
+        aSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if (isChecked == true) {
+                    Toast.makeText(getBaseContext(), "Música Encendida", Toast.LENGTH_SHORT).show();
+
+                    mp_intro.start();
+                    mp_intro.setLooping(true);
+                } else {
+                    Toast.makeText(getBaseContext(), "Música Apagada", Toast.LENGTH_SHORT).show();
+                    mp_intro.pause();
+                }
+            }
+        });
+
+
+
+
+
+
+
+
 
 
         tv_bestScore = (TextView)findViewById(R.id.textView_BestScore);
@@ -44,6 +81,8 @@ public class MainActivity extends AppCompatActivity {
             String temp_score = consulta.getString(1);
 
             tv_bestScore.setText("Record: " + temp_score + " de " + temp_nobre);
+
+
             BD.close();
 
         } else {
@@ -89,15 +128,33 @@ public class MainActivity extends AppCompatActivity {
 
     public void jugar(View view) {
         Intent siguiente = new Intent(this, MainActivity2_Jugar.class);
+        mp_click = MediaPlayer.create(this, R.raw.click);
+        mp_click.start();
+        mp_intro.stop();
         startActivity(siguiente);
 
+        finish();
 
     }
 
     public void practicar(View view) {
         Intent siguiente = new Intent(this, Practicar.class);
+        mp_click = MediaPlayer.create(this, R.raw.click);
+        mp_click.start();
+        mp_intro.stop();
         startActivity(siguiente);
+        finish();
 
+    }
+
+    public void exit(View view) {
+        mp_intro.stop();
+        finish();
+    }
+
+
+    @Override
+    public void onBackPressed() {
 
     }
 
