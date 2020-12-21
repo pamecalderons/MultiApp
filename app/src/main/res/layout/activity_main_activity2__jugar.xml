@@ -7,6 +7,34 @@
     android:background="@drawable/globos"
     tools:context=".MainActivity2_Jugar">
 
+    <Switch
+        android:id="@+id/switch4"
+        android:layout_width="128dp"
+        android:layout_height="48dp"
+        android:text="Música"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.943"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="56dp"
+        android:layout_height="36dp"
+        android:background="@color/colorPrimary"
+        android:onClick="back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976"
+        app:srcCompat="?attr/actionModeCloseDrawable" />
+
     <Button
         android:id="@+id/button3"
         android:layout_width="300dp"
@@ -38,8 +66,10 @@
         android:maxLength="20"
         android:paddingLeft="50dp"
         android:paddingRight="50dp"
+        android:textColor="@color/colorPrimary"
         android:textColorHighlight="@color/colorPrimaryDark"
         android:textColorHint="@color/colorPrimaryDark"
+        android:textColorLink="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
